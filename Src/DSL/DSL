@@ -1,0 +1,15 @@
+query ::= SELECT <expr>+ FROM <table>+
+        WHERE <cond>+
+        GROUP BY <column>+
+        ORDER BY <column>+
+        <table>::= atom
+        <column>::= <table>:atom
+        <cond>::= <cond>&& <cond>
+       | <cond> || <cond>
+       | ( <cond> )
+       | <cexpr> <op> <cexpr>
+        <op> ::= = | > | <
+        <cexpr> ::= const   | <column>
+        <expr> ::= <cexpr> | COUNT(<column>)  |DISTINCT <column>)
+        | MIN(<column>) | MAX(<column>)
+        | SUM(<column>) | AVG(<column>)"
